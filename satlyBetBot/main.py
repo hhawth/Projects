@@ -3,14 +3,20 @@ import re
 import socket
 import logging
 import sys
+import os
+from os.path import join, dirname
 
+from dotenv import load_dotenv
 from predictor import fight_predictions as fp
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
 SERVER = "irc.twitch.tv"
 PORT = 6667
-PASS = "oauth:txn9h654a11lm8g68e887xxnm6svuk"
+PASS = os.environ.get("PASS")
 BOT = "Hezza_bot"
 CHANNEL = "saltybet"
 

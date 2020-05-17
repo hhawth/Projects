@@ -1,18 +1,24 @@
 import socket
 import logging
 import sys
+import os
+from os.path import join, dirname
 
 import discord
 from discord.ext import commands
+from dotenv import load_dotenv
 
-TOKEN = "NzA4NDk1MzE3MjUwNzM2MjE5.XrYMBA.FaVTkwsRqjuYYALfGhiQ3yYYxOs"
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+TOKEN = os.environ.get("TOKEN")
 GUILD = "Dota"
 
 client = discord.Client()
 
 SERVER = "irc.twitch.tv"
 PORT = 6667
-PASS = "oauth:txn9h654a11lm8g68e887xxnm6svuk"
+PASS = os.environ.get("PASS")
 BOT = "Hezza_bot"
 CHANNEL = "saltybet"
 
